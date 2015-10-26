@@ -4,22 +4,33 @@
     <title>Calculate Thingies</title>
 	<meta charset="utf-8" />
     <script src="src/calculator.js" ></script>
-    <link href="css/calculator.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 </head>
 <body>
-    <h2>Calculate things</h2>
-    <div class="calculator">
-        <div>
-            First Number: <input type="text" id="firstNumber" />&nbsp;
-            Second Number: <input type="text" id="secondNumber"/>
+    <div class="container">
+        <h2>Calculate things</h2>
+        <div class="row">
+            <div class="col-md-4">
+                First Number: <input type="text" id="firstNumber" />&nbsp;
+            </div>
+            <div class="col-md-5">
+                Second Number: <input type="text" id="secondNumber"/>
+            </div>
         </div>
         <br />
-        <div class="buttons">
-            <button id="add">Add</button>
-            <button id="subtract">Subtract</button>
+        <div class="row">
+            <div id="add" class="col-md-1 btn btn-default">Add</div>
+            <div id="subtract" class="col-md-1 col-md-offset-1 btn btn-default">Subtract</div>
         </div>
         <br />
-        <div id="answer"/>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="answer">Answer is: </label>
+            </div>
+            <div class="col-md-1">
+                <div id="answer" />
+            </div>
+        </div>
     </div>
 </body>
 </html>

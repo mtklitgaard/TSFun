@@ -24,7 +24,6 @@
   <ItemGroup>
     <Content Include="calculator.html" />
     <Content Include="css\app.css" />
-    <Content Include="css\calculator.css" />
     <Content Include="index.html" />
     <Content Include="web.config" />
   </ItemGroup>
