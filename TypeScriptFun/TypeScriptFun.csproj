@@ -25,11 +25,13 @@
     <Content Include="calculator.html" />
     <Content Include="css\app.css" />
     <Content Include="index.html" />
+    <Content Include="partyhard.html" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app.ts" />
     <TypeScriptCompile Include="src\calculator.ts" />
+    <TypeScriptCompile Include="src\party.ts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.Debug.config">
