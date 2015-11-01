@@ -6,25 +6,29 @@
     private yearsOldElement: HTMLDivElement;
     private monthsOldElement: HTMLDivElement;
     private daysOldElement: HTMLDivElement;
+    private partyPimpScoreElement: HTMLDivElement;
     private timerVitalityToken: number;
     private timerAgeToken: number;
     private numberOfPartiesAttended: number;
+    private partyPimpScore: number;
     private yearsOld: number;
     private monthsOld: number;
     private daysOld: number;
 
-    constructor(vitalityElement: HTMLDivElement, goPartyElement: HTMLDivElement, numberOfPartiesAttendedElement: HTMLDivElement, yearsOldElement: HTMLDivElement, monthsOldElement: HTMLDivElement, daysOldElement: HTMLDivElement) {
+    constructor(vitalityElement: HTMLDivElement, goPartyElement: HTMLDivElement, numberOfPartiesAttendedElement: HTMLDivElement, yearsOldElement: HTMLDivElement, monthsOldElement: HTMLDivElement, daysOldElement: HTMLDivElement, partyPimpScoreElement: HTMLDivElement) {
         this.vitalityElement = vitalityElement;
         this.goPartyElement = goPartyElement;
         this.numberOfPartiesAttendedElement = numberOfPartiesAttendedElement;
         this.yearsOldElement = yearsOldElement;
         this.monthsOldElement = monthsOldElement;
         this.daysOldElement = daysOldElement;
+        this.partyPimpScoreElement = partyPimpScoreElement;
         this.vitality = 0;
         this.numberOfPartiesAttended = 0;
         this.yearsOld = 0;
         this.monthsOld = 0;
         this.daysOld = 1;
+        this.partyPimpScore = 0;
         this.wireEvents();
     }
 
@@ -35,11 +39,13 @@
     }
 
     goParty() {
-        if (this.vitality > 0) {
+        if (this.vitality >= 0) {
             this.vitality -= 100;
             this.updateVitality();
             this.numberOfPartiesAttended++;
+            this.partyPimpScore++;
             this.numberOfPartiesAttendedElement.innerHTML = this.numberOfPartiesAttended.toString();
+            this.partyPimpScoreElement.innerHTML = this.partyPimpScore.toString();
         }
     }
 
@@ -88,6 +94,7 @@ window.onload = () => {
     var yearsOldElement = <HTMLDivElement>document.getElementById("yearsOld");
     var monthsOldElement = <HTMLDivElement>document.getElementById("monthsOld");
     var daysOldElement = <HTMLDivElement>document.getElementById("daysOld");
-    var party = new Party(vitalityTracker, goPartyElement, numberOfPartiesAttended, yearsOldElement, monthsOldElement, daysOldElement);
+    var partyPimpScoreElement = <HTMLDivElement>document.getElementById("partyPimpScore");
+    var party = new Party(vitalityTracker, goPartyElement, numberOfPartiesAttended, yearsOldElement, monthsOldElement, daysOldElement, partyPimpScoreElement);
     party.start();
 }
