@@ -1,4 +1,4 @@
-﻿class Party {
+﻿class PartyController {
     private vitality: number;
     private vitalityElement: HTMLDivElement;
     private goPartyElement: HTMLDivElement;
@@ -95,6 +95,6 @@ window.onload = () => {
     var monthsOldElement = <HTMLDivElement>document.getElementById("monthsOld");
     var daysOldElement = <HTMLDivElement>document.getElementById("daysOld");
     var partyPimpScoreElement = <HTMLDivElement>document.getElementById("partyPimpScore");
-    var party = new Party(vitalityTracker, goPartyElement, numberOfPartiesAttended, yearsOldElement, monthsOldElement, daysOldElement, partyPimpScoreElement);
+    var party = new PartyController(vitalityTracker, goPartyElement, numberOfPartiesAttended, yearsOldElement, monthsOldElement, daysOldElement, partyPimpScoreElement);
     party.start();
 }
