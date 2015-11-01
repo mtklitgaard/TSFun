@@ -31,6 +31,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\app.ts" />
     <TypeScriptCompile Include="src\calculator.ts" />
+    <TypeScriptCompile Include="src\party.ts" />
     <TypeScriptCompile Include="src\partyController.ts" />
   </ItemGroup>
   <ItemGroup>
