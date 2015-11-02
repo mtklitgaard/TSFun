@@ -1,4 +1,5 @@
-﻿class Party {
+﻿"use strict";
+class Party {
     private _pimpPoints: number;
     private _vitalityCost: number;
     private _partyName: string;

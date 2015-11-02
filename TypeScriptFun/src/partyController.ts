@@ -1,4 +1,5 @@
-﻿class PartyController {
+﻿"use strict";
+class PartyController {
     private vitality: number;
     private vitalityElement: HTMLDivElement;
     private goPartyElement: HTMLDivElement;
@@ -14,6 +15,7 @@
     private yearsOld: number;
     private monthsOld: number;
     private daysOld: number;
+    private parties: Array<Party>;
 
     constructor(vitalityElement: HTMLDivElement, goPartyElement: HTMLDivElement, numberOfPartiesAttendedElement: HTMLDivElement, yearsOldElement: HTMLDivElement, monthsOldElement: HTMLDivElement, daysOldElement: HTMLDivElement, partyPimpScoreElement: HTMLDivElement) {
         this.vitalityElement = vitalityElement;
@@ -29,7 +31,13 @@
         this.monthsOld = 0;
         this.daysOld = 1;
         this.partyPimpScore = 0;
+        this.createParties();
         this.wireEvents();
+    }
+
+    createParties() {
+        var partyFactory = new PartyFactory();
+        this.parties = partyFactory.getParties();
     }
 
     wireEvents() {
