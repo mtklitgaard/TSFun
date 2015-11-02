@@ -11,7 +11,7 @@ class Party {
     }
 
     get pimpPoints() {
-        return this.pimpPoints;
+        return this._pimpPoints;
     }
 
     get vitalityCost() {
@@ -20,5 +20,22 @@ class Party {
 
     get partyName() {
         return this._partyName;
+    }
+
+    renderPartyToPage() : HTMLDivElement {
+        var pimpElement = document.createElement("div");
+        pimpElement.innerHTML = "Pimp Points: " + this.pimpPoints.toString();
+
+        var vitalityCostElement = document.createElement("div");
+        vitalityCostElement.innerHTML = "Vitality Cost: " + this.vitalityCost.toString();
+
+        var partyNameElement = document.createElement("div");
+        partyNameElement.innerHTML = "Party Name" + this.partyName.toString();
+
+        var divElement = document.createElement("div");
+        divElement.className = "btn btn-default col-xs-3";
+        divElement.innerHTML = partyNameElement.innerHTML + "<br />" + pimpElement.innerHTML + "<br />"+ vitalityCostElement.innerHTML;
+
+        return divElement;
     }
 }
