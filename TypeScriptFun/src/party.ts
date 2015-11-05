@@ -30,7 +30,7 @@ class Party {
         vitalityCostElement.innerHTML = "Vitality Cost: " + this.vitalityCost.toString();
 
         var partyNameElement = document.createElement("div");
-        partyNameElement.innerHTML = "Party Name" + this.partyName.toString();
+        partyNameElement.innerHTML = "Party Name: " + this.partyName.toString();
 
         var divElement = document.createElement("div");
         divElement.className = "btn btn-default col-xs-3";

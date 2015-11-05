@@ -34,7 +34,7 @@ class PartyController {
         this.daysOld = 1;
         this.partyPimpScore = 0;
         this.createParties();
-        this.wireEvents();
+        this.wireEvents(goPartyElement);
     }
 
     createParties() {
@@ -43,13 +43,14 @@ class PartyController {
         console.log("about to push parties");
         for (var party in this.parties) {
             var partyToRender : HTMLDivElement = this.parties[party].renderPartyToPage();
+            this.wireEvents(partyToRender);
             this.partyContainerElement.appendChild(partyToRender);
         }
 
     }
 
-    wireEvents() {
-        this.goPartyElement.addEventListener("click", () => {
+    wireEvents(partyElement: HTMLDivElement) {
+        partyElement.addEventListener("click", () => {
             this.goParty();
         });
     }
