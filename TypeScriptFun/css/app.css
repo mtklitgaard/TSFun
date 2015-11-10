@@ -1,7 +1,11 @@
-﻿body {
-    font-family: 'Segoe UI', sans-serif;
+﻿.party-div {
+    margin: 5px ;
+    font-size: 1.0em;
+    border: 1px solid black;
+    border-radius: 15px;
 }
 
-span {
-    font-style: italic;
+.party-div:hover {
+    background-color: lightgray;
+    cursor: pointer;
 }

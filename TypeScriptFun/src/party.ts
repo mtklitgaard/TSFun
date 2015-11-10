@@ -25,16 +25,21 @@ class Party {
     renderPartyToPage() : HTMLDivElement {
         var pimpElement = document.createElement("div");
         pimpElement.innerHTML = "Pimp Points: " + this.pimpPoints.toString();
-
+        
         var vitalityCostElement = document.createElement("div");
         vitalityCostElement.innerHTML = "Vitality Cost: " + this.vitalityCost.toString();
 
         var partyNameElement = document.createElement("div");
-        partyNameElement.innerHTML = "Party Name: " + this.partyName.toString();
+        partyNameElement.innerHTML = this.partyName.toString();
 
         var divElement = document.createElement("div");
-        divElement.className = "btn btn-default col-xs-3";
-        divElement.innerHTML = partyNameElement.innerHTML + "<br />" + pimpElement.innerHTML + "<br />"+ vitalityCostElement.innerHTML;
+        divElement.className = "col-xs-2 party-div";
+        divElement.setAttribute('data-points', this.pimpPoints.toString());
+        divElement.setAttribute("data-vitality", this.vitalityCost.toString());
+        divElement.setAttribute('data-name', this.partyName.toString());
+        divElement.appendChild(partyNameElement);
+        divElement.appendChild(pimpElement);
+        divElement.appendChild(vitalityCostElement);
 
         return divElement;
     }

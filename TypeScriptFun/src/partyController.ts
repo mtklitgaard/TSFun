@@ -2,7 +2,6 @@
 class PartyController {
     private vitality: number;
     private vitalityElement: HTMLDivElement;
-    private goPartyElement: HTMLDivElement;
     private numberOfPartiesAttendedElement: HTMLDivElement;
     private yearsOldElement: HTMLDivElement;
     private monthsOldElement: HTMLDivElement;
@@ -18,9 +17,8 @@ class PartyController {
     private daysOld: number;
     private parties: Array<Party>;
 
-    constructor(vitalityElement: HTMLDivElement, goPartyElement: HTMLDivElement, numberOfPartiesAttendedElement: HTMLDivElement, yearsOldElement: HTMLDivElement, monthsOldElement: HTMLDivElement, daysOldElement: HTMLDivElement, partyPimpScoreElement: HTMLDivElement, partyContainerElement: HTMLDivElement) {
+    constructor(vitalityElement: HTMLDivElement, numberOfPartiesAttendedElement: HTMLDivElement, yearsOldElement: HTMLDivElement, monthsOldElement: HTMLDivElement, daysOldElement: HTMLDivElement, partyPimpScoreElement: HTMLDivElement, partyContainerElement: HTMLDivElement) {
         this.vitalityElement = vitalityElement;
-        this.goPartyElement = goPartyElement;
         this.numberOfPartiesAttendedElement = numberOfPartiesAttendedElement;
         this.yearsOldElement = yearsOldElement;
         this.monthsOldElement = monthsOldElement;
@@ -34,7 +32,6 @@ class PartyController {
         this.daysOld = 1;
         this.partyPimpScore = 0;
         this.createParties();
-        this.wireEvents(goPartyElement);
     }
 
     createParties() {
@@ -51,16 +48,18 @@ class PartyController {
 
     wireEvents(partyElement: HTMLDivElement) {
         partyElement.addEventListener("click", () => {
-            this.goParty();
+            var points :number =  parseInt(partyElement.getAttribute("data-points"));
+            var vitality: number = parseInt(partyElement.getAttribute("data-vitality"));
+            this.goParty(points, vitality);
         });
     }
 
-    goParty() {
-        if (this.vitality >= 0) {
-            this.vitality -= 100;
+    goParty(points: number, vitalityCost: number) {
+        if (this.vitality >= vitalityCost) {
+            this.vitality -= vitalityCost;
             this.updateVitality();
             this.numberOfPartiesAttended++;
-            this.partyPimpScore++;
+            this.partyPimpScore += points;
             this.numberOfPartiesAttendedElement.innerHTML = this.numberOfPartiesAttended.toString();
             this.partyPimpScoreElement.innerHTML = this.partyPimpScore.toString();
         }
@@ -106,13 +105,12 @@ class PartyController {
 
 window.onload = () => {
     var vitalityTracker = <HTMLDivElement>document.getElementById("vitality");
-    var goPartyElement = <HTMLDivElement>document.getElementById("goParty");
     var numberOfPartiesAttended = <HTMLDivElement>document.getElementById("numberOfPartiesAttended");
     var yearsOldElement = <HTMLDivElement>document.getElementById("yearsOld");
     var monthsOldElement = <HTMLDivElement>document.getElementById("monthsOld");
     var daysOldElement = <HTMLDivElement>document.getElementById("daysOld");
     var partyPimpScoreElement = <HTMLDivElement>document.getElementById("partyPimpScore");
     var partyContainerElement = <HTMLDivElement>document.getElementById("parties");
-    var party = new PartyController(vitalityTracker, goPartyElement, numberOfPartiesAttended, yearsOldElement, monthsOldElement, daysOldElement, partyPimpScoreElement, partyContainerElement);
+    var party = new PartyController(vitalityTracker, numberOfPartiesAttended, yearsOldElement, monthsOldElement, daysOldElement, partyPimpScoreElement, partyContainerElement);
     party.start();
 }
