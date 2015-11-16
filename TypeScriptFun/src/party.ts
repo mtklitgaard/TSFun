@@ -31,7 +31,7 @@ class Party {
 
         var partyNameElement = document.createElement("div");
         partyNameElement.innerHTML = this.partyName.toString();
-
+         
         var divElement = document.createElement("div");
         divElement.className = "col-xs-2 party-div";
         divElement.setAttribute('data-points', this.pimpPoints.toString());
